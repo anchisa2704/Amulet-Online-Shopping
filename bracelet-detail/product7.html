@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>หินพิงค์โอปอล</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+    integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Krub&display=swap" rel="stylesheet">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+
+  <link href="../style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <script>
+      function setid() {
+    let idproduct = [];
+    idproduct.push({
+      id: 'bracelet7',
+    });
+    localStorage.setItem("productid", JSON.stringify(idproduct));
+  }
+  setid();
+  </script>
+  <!--   รถเข็น ของที่อยากได้  -->
+  <div class="contactContainer">
+    <div class="insideContainer">
+      <!--       <div class="wrapp">
+        <i href="wishlist.html" class="fa fa-heart" aria-hidden="true" style="color: var(--yellow);"></i>
+      </div> -->
+
+      <div class="wrappp">
+        <a href="../cart.html" class="fa fa-cart-plus" aria-hidden="true"
+          style="color: var(--yellow); text-decoration: none; margin-left:0.4rem"></a>
+        <div id="cartAmount" class="cartAmount">0</div>
+      </div>
+    </div>
+  </div>
+  <!--   รถเข็น ของที่อยากได้  -->
+
+<!-- <script>
+              document.getElementById("cartAmount").innerHTML = localStorage.getItem("data");
+            </script> -->
+  <!-- นาฟบาร์  -->
+  <div class="mouse"></div>
+  <div class="symbols">
+    <div class="symbols-left">
+      <a href=""><img src="https://media.discordapp.net/attachments/1034705487268171806/1034713768971739166/logo.png"
+          style="height: 75%" /></a>
+    </div>
+
+    <!--     ปุ่มฝั่งขวา -->
+    <div class="symbols-right">
+      <div class="symbols-right-center">
+        <!-- ปุ่มโฮม ชื่อผู้ใช้-->
+        <p style="color: #fbc10d; padding: 0px 10px;text-align: right; position: relative; top: 7px;font-weight: bold;"
+          id="user"></p>
+        <script>
+          if (localStorage.getItem("id") != null) {
+            // document.getElementById("login").innerHTML = localStorage.getItem("log");
+            document.getElementById("user").innerHTML = localStorage.getItem("id");
+          }
+          else {
+            localStorage.setItem("id", "User");
+            // localStorage.setItem("log", "Login");
+          }
+        </script>
+        <img src="https://media.discordapp.net/attachments/1034705487268171806/1034716105656238090/line2.png"
+          style="height:100%;">
+
+        <!-- ปุ่มล้อกอิน -->
+        <button class="button-solid" data-toggle="modal" data-target="#exampleModalCenter"
+          style=" height: 50%;background-color: #af1836;border:none ;" onclick="validate()">
+          <img src="https://media.discordapp.net/attachments/1034705487268171806/1034714401279856680/account.png"
+            style="height:100%;" />
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!--   Modal แรกก่อนหน้าล้อคอิน -->
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document" style="position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);">
+      <div class="modal-content ">
+        <div class="modal-header">
+          <div class="col-xl-4 d-none d-xl-block" style="border-color: #af1836;padding: 0;">
+            <img src="https://cdn.discordapp.com/attachments/973510603366858762/1041269626157416478/amulet2.jpg"
+              alt="Sample photo" style="height: 250px;width: 300px;" />
+          </div>
+        </div>
+        <p style="color: #b90017; padding: 0px 10px;position:absolute; left:440px; top:80px;font-weight: bold;"
+          id="user">Already Login</p>
+        <button type="button" class="btn btn-danger btn-info" id="logout"
+          style="height:75px; width:300px; position:absolute; left:350px; top:140px;" data-dismiss="modal"
+          aria-label="Close" onclick="logout()">ออกจากระบบ</button>
+
+      </div>
+    </div>
+  </div>
+  <!--   Modal แรกก่อนหน้าล้อคอิน -->
+
+  <!--   โมดัลล้อคอิน -->
+  <div id="modal2" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg" role="document" style="position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);">
+
+      <div class="modal-content" id="content2">
+        <div class="modal-body">
+          <div class="modal-header">
+            <div class="grid col-xs-12 col-sm-12 col-lg-12 title_stone">
+              <div style="padding-left: 1%;" id="thai">เข้าสู่ระบบ</div>
+            </div>
+            <button type="button" class="button-close" data-dismiss="modal" aria-label="Close">
+              <span class="Item" aria-hidden="true">&times;</span>
+            </button>
+          </div>
+
+          <!-- ฟอมล้อคอิน -->
+          <form>
+            <div class="form-group">
+              <input type="email" class="form-control form-control-lg" id="username" placeholder="ชื่อผู้ใช้ / อีเมลล์"
+                style="font-size:15px;"><br>
+              <input type="password" class="form-control form-control-lg" id="password" placeholder="รหัสผ่าน"
+                style="font-size:16px;">
+            </div>
+            <button type="button" class="forgot" data-toggle="modal" style="font-size:15px;" data-target="#modal3"
+              data-dismiss="modal" aria-label="Close">ลืมรหัสผ่าน</button>
+            </button>
+            <div><br></div>
+            <button type="button" class="btn btn-danger"
+              style="height:50px; width:515px; left:35px; top:20px;font-size:16px;" onclick="validate()"
+              data-dismiss="modal" aria-label="Close">เข้าสู่ระบบ</button>
+            <div><br></div>
+            <button type="button" class="btn btn-light border border-secondary"
+              style="height:50px; width:515px; left:35px; top:200px;font-size:15px;">ลงชื่อสมัคร</button>
+            <div><br></div>
+            <div style="text-align: center;font-size:12px;">
+              <span>การสร้างบัญชีถือว่าคุณยอมรับ</span><button class="forgot">ข้อกำหนดในการให้บริการของ Ohm Amulet.
+              </button>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--   ฟอมล้อคอิน -->
+  <!--   โมดัลล้อคอิน -->
+
+
+
+  <!--   โมดัลลืมรหัสผ่าน -->
+  <div id="modal3" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg" role="document" style="position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);">
+
+      <div class="modal-content" id="content3">
+        <div class="modal-body">
+          <div class="modal-header">
+            <div class="grid col-xs-12 col-sm-12 col-lg-12 title_stone">
+              <div style="padding-left: 1%;" id="thai">ลืมรหัสผ่าน</div>
+            </div>
+            <button type="button" class="button-close" data-dismiss="modal" aria-label="Close">
+              <span class="Item" aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="form-group">
+            <input type="email" class="form-control form-control-lg" id="userforgot" placeholder="อีเมลล์"
+              style="font-size:15px;"><br>
+            <span
+              style="font-size:12px;">โปรดป้อนอีเมล์ที่คุณใช้ในการสร้างบัญชีของโอห์มอมูเลทและเราจะส่งลิงก์ยืนยันให้กับคุณเพื่อรีเซ็ตรหัสผ่านของคุณ</span>
+          </div>
+          <button type="button" class="btn btn-danger"
+            style="height:50px; width:515px; left:35px; top:20px;font-size:16px;" onclick="validate2()"
+            data-dismiss="modal" aria-label="Close">ยืนยัน</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--   โมดัลลืมรหัสผ่าน -->
+
+
+  <div id="modal4" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg" role="document" style="position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);">
+
+      <div class="modal-content" id="content4">
+        <div class="modal-body">
+          <div class="modal-header">
+            <div class="grid col-xs-12 col-sm-12 col-lg-12 title_stone">
+              <div style="padding-left: 1%;" id="thai">สมัครสมาชิก</div>
+            </div>
+            <button type="button" class="button-close" data-dismiss="modal" aria-label="Close">
+              <span class="Item" aria-hidden="true">&times;</span>
+            </button>
+          </div>
+
+          <!--   ฟอร์มสมัครสมาชิก -->
+          <form>
+            <div class="form-group">
+              <label>ชื่อผู้ใช้</label>
+              <input type="email" class="form-control form-control-sm" id="username" placeholder="ชื่อผู้ใช้"
+                style="font-size:15px;">
+              <label style="padding-top: 2%;">วันเกิด</label>
+              <input type="date" class="form-control form-control-sm" id="dates" placeholder="ชื่อ - นามสกุล"
+                style="font-size:15px;">
+              <label style="padding-top: 2%;">หมายเลขโทรศัพท์</label>
+              <input type="text" class="form-control form-control-sm" id="phones" placeholder="หมายเลขโทรศัพท์"
+                style="font-size:15px;">
+              <label style="padding-top: 2%;">อีเมล์</label>
+              <input type="email" class="form-control form-control-sm" id="email" placeholder="อีเมล์"
+                style="font-size:15px;">
+              <label style="padding-top: 2%;">รหัสผ่าน</label>
+              <input type="text" class="form-control form-control-sm" id="pass" placeholder="รหัสผ่าน"
+                style="font-size:15px;">
+              <input type="checkbox" id="vehicle3" name="vehicle3" value="yessir">
+              <label for="vehicle3" style="padding-top: 3%;">ฉันเห็นด้วยกับ <u>ข้อตกลงการให้บริการ</u> และ
+                <u>เงื่อนไขความเป็นส่วนตัว</u></label>
+              <br>
+              <button type="button" class="btn btn-danger"
+                style="height:40px; width:535px; position:absolute; left:15px; bottom:20px;" data-dismiss="modal"
+                aria-label="Close" data-target="#modal2" data-toggle="modal" onclick="register()">สมัคร</button>
+            </div>
+            <!--   ฟอร์มสมัครสมาชิก -->
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--   โมดัลสมัครสมาชิก -->
+
+
+  <!-- เมนูเครื่องราง -->
+  <div id="header">
+    <a href="../login.html" class="text">เครื่องรางไทย</a>
+    <a href="../japanese.html" class="text">เครื่องรางญี่ปุ่น</a>
+    <a href="../chinese.html" class="text">เครื่องรางจีน</a>
+    <a href="../bracelet.html" class="text">กำไลหิน</a>
+    <a href="../animal.html" class="text">สัตว์มงคล</a>
+  </div>
+  <!-- เมนูเครื่องราง -->
+
+
+  <section id="prodetail" class="section-p1">
+    <div class="single-img">
+      <img
+        src="https://cdn.discordapp.com/attachments/1036272800589160528/1037611308834635806/unknown.png"
+        width="100%" id="MainImg" alt="" style="border-radius:10px; width: 100%;">
+      <!--       <div class="choice-group">
+        <div class="choice-col2">
+          <img src="#" width="100%" class="choice" onclick="changeImg1(this)" alt="">
+        </div>
+        <div class="choice-col2">
+          <img src="#" width="100%" class="choice" onclick="changeImg2(this)" alt="">
+        </div>
+      </div> -->
+    </div>
+
+    <div id="product-id-bracelet7" class="sigle-detail">
+      <h3 class="title_stone3">หินพิงค์โอปอล</h3>
+      <div class="price-quantity">
+      <h2>฿ 199 </h2>
+      </div>
+<!--       <select>
+          <option>Select</option>
+          <option>สีเงิน</option>
+          <option>สีทอง</option>
+        </select> -->
+      <div class="buttons" id="shop">
+  
+          </div>
+      <button class="add_button"><a href="../cart.html">Go to cart</a></button>
+      <div class="detail_font">รายละเอียดสินค้า:</div>
+      <div class="detail_color" style="height:100px;">
+        <p>
+- หินแห่งความรักและโรแมนติก<br>
+- หินช่วยบำเมบัดจิตใจให้อ่อนโยน มีตตา ช่วยนำพาความรักและความสมหวังมาให้</p>
+      </div>
+    </div>
+  </section>
+
+  <!--   ฟุตเต้อ -->
+  <footer class="footer_area section_padding_130_0" id="footer">
+    <div class="container">
+      <div class="row">
+        <!-- Single Widget-->
+        <div class="col-12 col-sm-6 col-lg-4">
+          <div class="single-footer-widget section_padding_0_130">
+            <!-- Footer Social Area-->
+            <div class="footer_social_area">
+              <h6>ติดตามเราได้ทาง</h6>
+              <br>
+              <a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="Facebook"><i
+                  class="fab fa-facebook-f"></i></a>
+              <a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="Pinterest"><i
+                  class="fab fa-twitter"></i></a>
+              <a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="Skype"><i
+                  class="fab fa-instagram"></i></a>
+              <a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="Twitter"><i
+                  class="fab fa-youtube"></i></a>
+              <a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="Twitter"><i
+                  class="fab fa-github"></i></a>
+            </div>
+          </div>
+        </div>
+        <!-- Single Widget-->
+        <div class="col-12 col-sm-6 col-lg">
+          <div class="single-footer-widget section_padding_0_130">
+            <!-- Widget Title-->
+            <h5 class="widget-title">เพิ่มเติม</h5>
+            <!-- Footer Menu-->
+            <div class="footer_menu">
+              <ul>
+                <li><a href="#">Web Tech Project</a></li>
+                <li><a href="#">Faculty of IT</a></li>
+                <li><a href="#">KMITL</a></li>
+                <!--                 <li><a href="#">Community</a></li> -->
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- Single Widget-->
+        <div class="col-12 col-sm-6 col-lg">
+          <div class="single-footer-widget section_padding_0_130">
+            <!-- Widget Title-->
+            <h5 class="widget-title">สินค้าของเรา</h5>
+            <!-- Footer Menu-->
+            <div class="footer_menu">
+              <ul>
+
+                <li><a href="../login.html">เครื่องรางไทย</a></li>
+                <li><a href="../japanese.html">เครื่องรางญี่ปุ่น</a></li>
+                <li><a href="../chinese.html">เครื่องรางจีน</a></li>
+                <li><a href="../bracelet.html">กำไลหิน</a></li>
+                <li><a href="../animal.html">สัตว์มงคล</a></li>
+
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- Single Widget-->
+        <div class="col-12 col-sm-6 col-lg">
+          <div class="single-footer-widget section_padding_0_130">
+            <!-- Widget Title-->
+            <h5 class="widget-title">ติดต่อเรา</h5>
+            <!-- Footer Menu-->
+            <div class="footer_menu">
+              <ul>
+                <li><a href="#">ติดต่อคอลเซ็นเตอร์</a></li>
+                <li><a href="#">ติดต่อเราผ่านอีเมลล์</a></li>
+                <li><a href="#">เงื่อนไขการให้บริการ</a></li>
+                <li><a href="#">ศูนย์ช่วยเหลือ</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="bottom">
+      <div class="copy-right" style="color: grey; font-size: 11px;">©2022 Ohmmm amulet's Thailand. All Rights Reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    var MainImg = document.getElementById("MainImg");
+    var img = document.getElementsByClassName("choice");
+
+    function changeImg1() {
+      MainImg.src = img[0].src;
+    }
+
+    function changeImg2() {
+      MainImg.src = img[1].src;
+    }
+
+    function changeImg3() {
+      MainImg.src = img[2].src;
+    }
+  </script>
+<script src="../src/Data.js"></script>
+<script src="../src/main.js"></script>
+  <script src="../script.js"></script>
+</body>
+
+</html>
